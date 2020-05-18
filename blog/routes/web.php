@@ -31,3 +31,11 @@ Route::get("/services","content@services");
 // Route::get("/posts/create","postController@create")->name("post.create");
 // Route::post("posts/store","postController@store");
 Route::resource('posts', 'postController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

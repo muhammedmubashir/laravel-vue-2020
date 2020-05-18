@@ -9,17 +9,23 @@ class postController extends Controller
 {
     function index()
     {
-    	$data['postList'] = postModel::all();
+
+    	// $data['postList'] = postModel::all();
     	// Where id > 100 & id < 200
     	// limit 50, 10
     	// group by colnames
     	// // order by 
 
     	// $data['postList'] = postModel::select('title')
-     //    ->orderBy('title', 'asc')
-     //    ->limit(3)
-     //    ->get();
-    	return view("post.list",$data);
+	    //    ->orderBy('title', 'asc')
+	    //    ->limit(3)
+	    //    ->get();
+	    $postObject 		= new postModel();
+	    $data['postList'] 	= $postObject->getAllPosts();
+
+		//for this, need to define static getAllposts
+		// $data['postList'] 	= postModel::getAllPosts();
+	    return view("post.list",$data);
     }
 
     function create()

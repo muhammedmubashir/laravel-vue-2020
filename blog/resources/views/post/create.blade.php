@@ -12,7 +12,7 @@
 	{{ csrf_field() }}
 	<div>
 		<label>Title</label>
-		<input type="text" name="title">
+		<input type="text" name="title" value="{{ old('title') }}">
 	</div>
 	<br>
 	<br>
