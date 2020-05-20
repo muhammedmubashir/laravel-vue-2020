@@ -1,4 +1,4 @@
-@extends("layout.main")
+@extends('layouts.app')
 @section("content")
 <h2>Create New Post</h2>
 @if($errors->any())

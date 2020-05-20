@@ -7,6 +7,12 @@ use App\postModel;
 
 class postController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function index()
     {
 
@@ -20,6 +26,8 @@ class postController extends Controller
 	    //    ->orderBy('title', 'asc')
 	    //    ->limit(3)
 	    //    ->get();
+    	// method#1
+	    // $data['postList'] 	= postModel::getAllposts();
 	    $postObject 		= new postModel();
 	    $data['postList'] 	= $postObject->getAllPosts();
 
@@ -30,6 +38,7 @@ class postController extends Controller
 
     function create()
     {
+        $this->middleware('auth');
     	return view("post.create");
     }
 

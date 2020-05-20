@@ -1,0 +1,11 @@
+	youtube git branch
+
+1. insert post
+2. edit form (home work)
+3. delete (home work)
+4. middleware (rbac / ACL)
+
+branch code merge / push
+
+
+

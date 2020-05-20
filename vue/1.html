@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>Product Name</h2>
+		<h3> {{ product }} </h3>
+	</div>
+
+</body>
+
+
+<script type="text/javascript">
+	var app = new Vue({
+		el: "#app",
+		data: {
+			product: "iPhone"
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!--conditional rendering -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="product">
+			<div class="product image">
+				<!-- <img v-bind:src="image"> -->
+				<img :src="image">
+			</div>
+			<div class="product info">
+				<h2>{{ product }}</h2>
+				<p>Stock {{ inventory }}</p>
+				<p v-if="inventory > 10">IN STOCK</p>
+				<p v-else-if="inventory < 10 && inventory > 0">
+					ALMOST SOLD
+				</p>
+				<p v-else>OUT OF STOCK</p>
+				<p>Specifications</p>
+				<ul class="specifications">
+					<!-- foreach($record in $array ) -->
+					<li v-for="singleSpec in specifications">
+						{{ singleSpec }}
+					</li>
+				</ul>
+				<p>Color Variations</p>
+				<ul class="product-color">
+					<!-- foreach($record in $array ) -->
+					<li v-for="color in colorVariant" :key="color.colorID">
+						{{ color.colorOption }}
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+<script type="text/javascript">
+	var app = new Vue({
+		el: "#app",
+		data: {
+			product			: "iPhone",
+			image			: "images/iphone-red.jpeg",
+			inventory		: 20,
+			specifications	: ["64GB","2GB RAM", "13 MP Camera", "5.5 inch screen"],
+			colorVariant	: [
+								{
+									colorID: 1,
+									colorOption: "Red"
+								},
+								{
+									colorID: 2,
+									colorOption: "White"
+								}
+							  ]
+
+		}
+	});
+</script>
+</html>
