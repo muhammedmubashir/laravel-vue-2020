@@ -1,4 +1,4 @@
-<!--conditional rendering -->
+<!--Event Binding -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +37,18 @@
 					</li>
 				</ul>
 
+				<div class="cart">
+					<p> Cart {{ cart }}</p>
+				</div>
+
+				<div>
+					<!-- blur
+					hover
+					doubleclick
+					click -->
+					<button v-on:click="addToCart">Add to cart</button>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -45,6 +57,10 @@
 
 
 <script type="text/javascript">
+	// function addToCart()
+	// {
+
+	// }
 	var app = new Vue({
 		el: "#app",
 		data: {
@@ -61,7 +77,16 @@
 									colorID: 2,
 									colorOption: "White"
 								}
-							  ]
+							  ],
+			cart 			: 0,
+
+		},
+		methods: {
+			addToCart()
+			{
+				// cart = cart + 1
+				this.cart += 1
+			}
 
 		}
 	});

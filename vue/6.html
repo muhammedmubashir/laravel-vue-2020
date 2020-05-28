@@ -1,4 +1,4 @@
-<!--conditional rendering -->
+<!--Typical Event Binding -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,12 +30,31 @@
 					</li>
 				</ul>
 				<p>Color Variations</p>
-				<ul class="product-color">
-					<!-- foreach($record in $array ) -->
+				<!-- foreach($record in $array ) -->
+								
+				<!-- <ul class="product-color">
 					<li v-for="color in colorVariant" :key="color.colorID">
 						{{ color.colorOption }}
 					</li>
-				</ul>
+				</ul> -->
+
+				<div v-for="color in colorVariant" :key="color.colorID">
+					<p v-on:click="updateImage(color.colorImage)" style="cursor: pointer;">
+						{{ color.colorOption }}
+					</p>
+				</div>
+
+				<div class="cart">
+					<p> Cart {{ cart }}</p>
+				</div>
+
+				<div>
+					<!-- blur
+					hover
+					doubleclick
+					click -->
+					<button v-on:click="addToCart">Add to cart</button>
+				</div>
 
 			</div>
 		</div>
@@ -45,6 +64,10 @@
 
 
 <script type="text/javascript">
+	// function addToCart()
+	// {
+
+	// }
 	var app = new Vue({
 		el: "#app",
 		data: {
@@ -55,13 +78,29 @@
 			colorVariant	: [
 								{
 									colorID: 1,
-									colorOption: "Red"
+									colorOption: "Red",
+									colorImage: "images/iphone-red.jpeg",
 								},
 								{
 									colorID: 2,
-									colorOption: "White"
+									colorOption: "White",
+									colorImage: "images/iphone-white.jpeg",
 								}
-							  ]
+							  ],
+			cart 			: 0,
+
+		},
+		methods: {
+			addToCart()
+			{
+				// cart = cart + 1
+				this.cart += 1
+			},
+			updateImage(newImage)
+			{
+				console.log(newImage);
+				this.image = newImage
+			}
 
 		}
 	});

@@ -1,4 +1,4 @@
-<!--conditional rendering -->
+<!--Style Binding -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,12 +30,38 @@
 					</li>
 				</ul>
 				<p>Color Variations</p>
-				<ul class="product-color">
-					<!-- foreach($record in $array ) -->
+				<!-- foreach($record in $array ) -->
+								
+				<!-- <ul class="product-color">
 					<li v-for="color in colorVariant" :key="color.colorID">
 						{{ color.colorOption }}
 					</li>
-				</ul>
+				</ul> -->
+
+				<div v-for="color in colorVariant" 
+						:key="color.colorID"
+						:style="{ backgroundColor: color.colorOption }" 
+						class="color-box" 
+						v-on:click="updateImage(color.colorImage)"
+				></div>
+
+				<div class="cart">
+					<p> Cart {{ cart }}</p>
+				</div>
+
+				<div>
+					<!-- blur
+					hover
+					doubleclick
+					click -->
+					<button 
+						v-on:click="addToCart"
+						:disabled="!inStock" 
+						:class="{ disabledButton: !inStock }" 
+					>
+						Add to cart
+					</button>
+				</div>
 
 			</div>
 		</div>
@@ -45,23 +71,46 @@
 
 
 <script type="text/javascript">
+	// function addToCart()
+	// {
+
+	// }
 	var app = new Vue({
 		el: "#app",
 		data: {
 			product			: "iPhone",
 			image			: "images/iphone-red.jpeg",
 			inventory		: 20,
+			inStock			: false,
 			specifications	: ["64GB","2GB RAM", "13 MP Camera", "5.5 inch screen"],
 			colorVariant	: [
 								{
 									colorID: 1,
-									colorOption: "Red"
+									colorOption: "Red",
+									colorImage: "images/iphone-red.jpeg",
+									colorInventory: 20
 								},
 								{
 									colorID: 2,
-									colorOption: "White"
+									colorOption: "silver",
+									colorImage: "images/iphone-white.jpeg",
+									colorInventory: 0
 								}
-							  ]
+							  ],
+			cart 			: 0,
+
+		},
+		methods: {
+			addToCart()
+			{
+				// cart = cart + 1
+				this.cart += 1
+			},
+			updateImage(newImage)
+			{
+				console.log(newImage);
+				this.image = newImage
+			}
 
 		}
 	});
